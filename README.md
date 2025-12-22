@@ -1,6 +1,8 @@
 ## music-recommendation-model
 
-Dataset comes from Kaggle repository [link](https://www.kaggle.com/datasets/joebeachcapital/30000-spotify-songs/data).  Almost 30,000 Songs from the Spotify API. See the readme file for a formatted data dictionary table.
+Dataset comes from Kaggle repository [link](https://www.kaggle.com/datasets/joebeachcapital/30000-spotify-songs/data). Almost 30,000 Songs from the Spotify API. See the readme file for a formatted data dictionary table.
+
+I will not be using Spotify Tracks Dataset [link](https://www.kaggle.com/datasets/gauthamvijayaraj/spotify-tracks-dataset-updated-every-week) for this problem anymore as 30000-spotify-songs is enough for the problem.
 
 ## Jupyter Notebook
 
