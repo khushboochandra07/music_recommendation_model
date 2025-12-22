@@ -28,7 +28,9 @@ The spotify data has data about tracks, artists, genre, popularity, release date
 
 ### **Data Preparation**  
 
-Renamed playlist_genre and playlist_subgenre to genre and subgenre respectively. Converted track_album_release_date to year.
+Dropped the rows with null 'track_name', 'track_artist', 'track_album_name'.
+Renamed playlist_genre and playlist_subgenre to genre and subgenre respectively. 
+Converted track_album_release_date to year.
 
 
 Visualization
