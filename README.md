@@ -28,10 +28,10 @@ The spotify data has data about tracks, artists, genre, popularity, release date
 
 ### **Data Preparation**  
 
-Dropped the rows with null 'track_name', 'track_artist', 'track_album_name'.
-Renamed playlist_genre and playlist_subgenre to genre and subgenre respectively. 
-Converted track_album_release_date to year.
-
+*   Dropped the rows with null 'track_name', 'track_artist', 'track_album_name'.
+*   Renamed playlist_genre and playlist_subgenre to genre and subgenre respectively. 
+*   Converted track_album_release_date to year.
+*   Added spotify_url column for the app
 
 Visualization
 
@@ -58,5 +58,36 @@ Visualization
 
 ![alt text](/images/top_artist.png)
 
+
+### **Modeling** 
+
+For the music recommendation problem, we are using the Clustering (K-means) to group songs into clusters based on songs metadata like loudeness, danceability, acousticness, energy. Fot this first step is to fifure out the value for k and then group the songs into clusters by applying the KMeans algorithm.
+
+Step 1 - Used elbow method to figure out the value of k to be 4.
+
+![alt text](/images/elbow.png)
+
+Step 2 - applied KMean to group the songs in clusters
+
+![alt text](/images/kmean.png)
+
+Compared the centers of Kmean and PCA to make sure that we have the right dimensionality of the data
+
+![alt text](/images/kmeancluster.png)
+
+![alt text](/images/pcacenters.png)
+
+### **Evaluation**
+After running KMean and PCA it is determined that KMean is appropriate for the music recommendation model and thus should be productionlized.
+
+### **Deployment** 
+
+To see the UI version of the app follow the below steps:
+1. Clone or download the repository to your local system.
+2. Open Command Prompt (CMD) or your preferred terminal
+3. Ensure you have Python installed (python --version)
+4. execute this command in command prompt - "pip install streamlit"
+5. Navigate to the folder containing app.py using cd foldername.in the cloned repository
+6. execute this command in command prompt - streamlit run app.py
 
 # Copyright (c) Khushboo Chandra.
