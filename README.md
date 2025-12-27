@@ -87,7 +87,20 @@ To see the UI version of the app follow the below steps:
 2. Open Command Prompt (CMD) or your preferred terminal
 3. Ensure you have Python installed (python --version)
 4. execute this command in command prompt - "pip install streamlit"
-5. Navigate to the folder containing app.py using cd foldername.in the cloned repository
+5. Navigate to the folder containing [pythoncode\app.py](https://github.com/khushboochandra07/music_recommendation_model/blob/main/pythoncode/app.py) using cd foldername on yopur local system.
 6. execute this command in command prompt - streamlit run app.py
+
+Note: for Macbook use [link](https://docs.streamlit.io/get-started/installation/command-line) to install streamlit.
+
+![alt text](/images/landing.png)
+
+![alt text](/images/recommendation1.png)
+
+![alt text](/images/song.png)
+
+![alt text](/images/recommendation.png)
+
+
+
 
 # Copyright (c) Khushboo Chandra.

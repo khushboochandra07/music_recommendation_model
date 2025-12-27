@@ -6,9 +6,65 @@ df = pd.read_csv("../data/clustered_songs.csv")
 
 st.set_page_config(page_title="Music Recommendation", layout="wide")
 
+# Custom CSS to make tabs more intuitive
+st.markdown("""
+    <style>
+    /* Style the tab buttons */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 2px;
+        background-color: #f0f2f6;
+        border-radius: 10px 10px 0 0;
+        padding: 5px;
+    }
+    
+    .stTabs [data-baseweb="tab"] {
+        height: 50px;
+        padding: 10px 24px;
+        background-color: #ffffff;
+        border-radius: 8px 8px 0 0;
+        border: 2px solid #e6e6e6;
+        border-bottom: none;
+        color: #666;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        margin-right: 2px;
+    }
+    
+    .stTabs [data-baseweb="tab"]:hover {
+        background-color: #f8f9fa;
+        border-color: #1f77b4;
+        color: #1f77b4;
+        transform: translateY(-2px);
+    }
+    
+    .stTabs [aria-selected="true"] {
+        background-color: #1f77b4 !important;
+        border-color: #1f77b4 !important;
+        color: white !important;
+        box-shadow: 0 4px 8px rgba(31, 119, 180, 0.3);
+    }
+    
+    /* Style the tab content */
+    .stTabs [data-baseweb="tab-panel"] {
+        background-color: white;
+        border: 2px solid #1f77b4;
+        border-radius: 0 0 10px 10px;
+        padding: 20px;
+        margin-top: -2px;
+        min-height: 400px;
+    }
+    
+    /* Remove default streamlit tab styling */
+    .stTabs > div > div > div > div {
+        border: none;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
 st.title("🎵 Music Recommendation App")
 
-# Navigation tabs
+# Navigation tabs with more descriptive labels
 tab1, tab2 = st.tabs(["🔥 Top Trending Songs", "🎯 Find Similar Songs"])
 
 # TAB 1: Top Trending Songs (existing flow)
@@ -36,7 +92,7 @@ with tab1:
             st.write(f"🔥 **Popularity:** {row['track_popularity']}")
             
             # Optional: Add a button to see more from this cluster
-            if st.button(f"Explore songs similar to {row['track_name']}", key=f"trending_btn_{i}"):
+            if st.button(f"Click to explore songs similar to {row['track_name']}", key=f"trending_btn_{i}"):
                 st.session_state['selected_cluster'] = row['cluster_kmean']
                 st.session_state['selected_track'] = row['track_name']
                 st.session_state['active_tab'] = 'trending'
@@ -143,3 +199,10 @@ with tab2:
             st.markdown(recommendations_display.to_html(escape=False, index=False), unsafe_allow_html=True)
         else:
             st.info("No similar songs found in this cluster.")
+        
+        # Add a button to clear selection
+        if st.button("🔄 Search for Another Song"):
+            for key in ['user_selected_cluster', 'user_selected_track', 'user_selected_artist', 'active_tab']:
+                if key in st.session_state:
+                    del st.session_state[key]
+            st.rerun()
